@@ -1,2 +1,3 @@
 # Jeans_color_cluster
-Cluster jeans by its colors.
+Cluster jeans by its colors.(Currently undergoing)
+
