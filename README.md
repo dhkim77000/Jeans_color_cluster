@@ -34,3 +34,15 @@ The distance is weighted by its percentage calculated above.
 
 ![image](https://user-images.githubusercontent.com/89527573/174468409-56406fd2-c337-4f76-8225-62151b56258e.png)
 
+#### Distance = 25.051756135932177(Pretty Close)
+![3](https://user-images.githubusercontent.com/89527573/174489847-7181a63a-8f59-47cd-9d8d-ca07248c4919.jpg)
+![4](https://user-images.githubusercontent.com/89527573/174489860-e9dd5de8-76f7-4e46-bb33-342955a7781c.jpg)
+
+#### Distance = 91.66139599425614(Pretty far)
+
+![image](https://user-images.githubusercontent.com/89527573/174490568-eecef2e2-aa9c-4f74-836a-e6e869678a41.png)
+![4](https://user-images.githubusercontent.com/89527573/174489860-e9dd5de8-76f7-4e46-bb33-342955a7781c.jpg)
+
+
+
+
