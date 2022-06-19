@@ -6,6 +6,9 @@ import numpy as np
 import cv2
 import pandas as pd
 from tqdm import tqdm
+import operator
+
+
 def rgb_to_hex(rgb_color):
     hex_color = "#"
     for i in rgb_color:
@@ -14,31 +17,46 @@ def rgb_to_hex(rgb_color):
     return hex_color
 def prep_image(raw_img):
     modified_img = cv2.resize(raw_img, (1400, 1000), interpolation = cv2.INTER_AREA)
-    modified_img = modified_img[:, 200:700]
     modified_img = modified_img.reshape(modified_img.shape[0]*modified_img.shape[1], 3)
     return modified_img
 
 def color_analysis(img):
     total = img.shape[0] * img.shape[1]
-    clf = KMeans(n_clusters = 5)
+    clf = KMeans(n_clusters = 6)
     color_labels = clf.fit_predict(img)
     center_colors = clf.cluster_centers_
     counts = Counter(color_labels)
+    counts = sorted(counts.items(), key=operator.itemgetter(1))
     
-    ordered_colors = [center_colors[i] for i in counts.keys()]
-    hex_colors = [rgb_to_hex(ordered_colors[i]) for i in counts.keys()]
+    ordered_colors = []
+    ordered_values = []
+    
+    for data in counts:
+        color = data[0]
+        counts = data[1]
+        ordered_colors.append(center_colors[color])
+        ordered_values.append(counts)
+    
 
-
-    data = {}
-    for i,value in enumerate(np.array(list(counts.values()))):
-        if i == 0: continue
-        data[hex_colors[i]] = np.round((value / total) * 100, 2)
+    hex_colors = [rgb_to_hex(color) for color in ordered_colors]
+    
+    data ={}
+    
+    for i in range(len(ordered_colors)):
+        data[hex_colors[i]] = ordered_values[i]
+        
+    del ordered_colors
+    del ordered_values
+    del hex_colors
+    del data['#fdfdfd']
+    
+        
     data = Normalize(data)
     return data
 
 def Normalize(data):
+    total = np.sum(list(data.values()))
     for i,color in enumerate(data.keys()):
-        total = np.sum(list(data.values()))
         data[color] = list(data.values())[i] / total
     return data
     
