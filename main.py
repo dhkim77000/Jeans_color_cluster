@@ -6,7 +6,7 @@ import cv2
 import pandas as pd
 from tqdm import tqdm
 import operator
-
+from PIL import ImageColor
 
 def rgb_to_hex(rgb_color):
     hex_color = "#"
@@ -42,18 +42,13 @@ def color_analysis(img):
     data ={}
     
     for i in range(len(ordered_colors)):
-        data[hex_colors[i]] = ordered_values[i]
+        if np.mean(RGB) < 240:
+            data[hex_colors[i]] = ordered_values[i]
         
     del ordered_colors
     del ordered_values
     del hex_colors
 
-    if '#fdfdfd' in data:
-        del data['#fdfdfd']
-
-    if '#ffffff' in data:
-        del data['#ffffff']
-        
     data = Normalize(data)
 
     return data
