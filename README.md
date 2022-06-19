@@ -14,23 +14,23 @@ Finding the right jeans that you want is difficult. Since the subtle differences
 ---
 ### Jeans 1
 
-![image](https://user-images.githubusercontent.com/89527573/174426391-5d03eb07-afad-4a84-8205-3114185a0363.png)
-![image](https://user-images.githubusercontent.com/89527573/174426386-ba82cacb-50b1-480a-9222-e260d26b50e6.png)
+![image](https://user-images.githubusercontent.com/89527573/174468429-0b41349e-7bdf-418b-bd31-78deceb0f639.png)
+![image](https://user-images.githubusercontent.com/89527573/174468427-5b4faedf-b09b-4fdf-b8b2-2835fc5914c9.png)
 
 ### Jeans 2
 
-![image](https://user-images.githubusercontent.com/89527573/174426409-b333241d-594c-452d-a035-bd709e0186b4.png)
-![image](https://user-images.githubusercontent.com/89527573/174426414-1ab6e0c2-7c77-4c70-8de2-d3b95545e72f.png)
+![image](https://user-images.githubusercontent.com/89527573/174468435-d9aa4a04-4243-4099-89d2-ab0c8d5ab457.png)
+![image](https://user-images.githubusercontent.com/89527573/174468436-21451931-5724-44f4-9684-287f09301d35.png)
 
 
 # Measure similarity
 ---
 
 The color data of the jeans if given like this.
-![image](https://user-images.githubusercontent.com/89527573/174465994-28437ea2-c8a7-47e3-962a-b9a606534dd5.png)
+![image](https://user-images.githubusercontent.com/89527573/174468417-0c016865-01bd-4c54-abd4-a26a9f43d32b.png)
 
 Then we measure the distance between two jeans(I used Delta E1994). About ~15 seems acceptable distance.
 The distance is weighted by its percentage calculated above.
 
-![image](https://user-images.githubusercontent.com/89527573/174466169-8b71f740-aead-4a4a-b994-89fdac13e5ed.png)
+![image](https://user-images.githubusercontent.com/89527573/174468409-56406fd2-c337-4f76-8225-62151b56258e.png)
 
