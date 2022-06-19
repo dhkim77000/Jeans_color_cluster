@@ -1,7 +1,6 @@
 from collections import Counter
 from sklearn.cluster import KMeans
 from matplotlib import colors
-import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 import pandas as pd
@@ -48,10 +47,15 @@ def color_analysis(img):
     del ordered_colors
     del ordered_values
     del hex_colors
-    del data['#fdfdfd']
-    
+
+    if '#fdfdfd' in data:
+        del data['#fdfdfd']
+
+    if '#ffffff' in data:
+        del data['#ffffff']
         
     data = Normalize(data)
+
     return data
 
 def Normalize(data):
@@ -72,10 +76,11 @@ if __name__ == "__main__":
         image_id = str(jeans_df.loc[i,'Unnamed: 0.1.1'])
         image = cv2.imread("/home/dhkim/Farfetch_Crawler/img/jeans/"+ image_id + '.jpg')
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        modified_image = prep_image(image)
 
+        modified_image = prep_image(image)
         data = color_analysis(modified_image)
         
+
         
         jeans_df.loc[i,'Color Components'] = str(data)  ##save as string, use eval() to convert to dict
 
