@@ -1,3 +1,22 @@
+from collections import Counter
+from sklearn.cluster import KMeans
+from matplotlib import colors
+import matplotlib.pyplot as plt
+import cv2
+import pandas as pd
+import cv2
+import numpy as np
+import math
+
+def hex_to_rgb(data):  ##data is given as string
+    data = eval(data)
+    hex_color = list(data.keys())
+    percentage = list(data.values())
+    
+    for color in hex_color:
+        rgb = tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+    return rgb
+
 def rgb_to_xyz(rgb):
     
     R = rgb[0]
@@ -59,8 +78,11 @@ def XYZ_to_CIELAB(XYZ):
     
     return (CIE_L, CIE_a, CIE_b)
     
-def distance(RGB1,RGB2, k_L = 2, K1 = 0.0048, K2 = 0.014, k_c = 1, k_H = 1):
+def distance(HEX1,HEX2, k_L = 2, K1 = 0.0048, K2 = 0.014, k_c = 1, k_H = 1):
     
+    RGB1 = hex_to_rgb(HEX1)
+    RGB2 = hex_to_rgb(HEX2)
+
     XYZ1 = rgb_to_xyz(RGB1)
     XYZ2 = rgb_to_xyz(RGB2)
     
@@ -91,3 +113,35 @@ def distance(RGB1,RGB2, k_L = 2, K1 = 0.0048, K2 = 0.014, k_c = 1, k_H = 1):
     distance = np.sqrt((delta_L/(k_L*S_L))**2 + (delta_Cab/(k_c * S_C))**2 + (delta_Hab/(k_H*S_H))**2)
     
     return distance
+
+
+if __name__ == "__main__":
+
+    df = pd.read_csv('/home/dhkim/Jeans_cluster/jeans_color_data.csv')
+    distance_data = pd.DataFrame(np.zeros((len(df), len(df))), columns = df['Unnamed: 0.1.1'], index =  df['Unnamed: 0.1.1'])  
+    for i in tqdm(range(len(df))):
+
+        ref_id = ref.loc[i,'Unnamed: 0.1.1']
+
+        ref = ref.loc[i,'Color Components'] ##string
+        ref = pd.Series(eval(ref)) ## dictionary
+
+        others = df.loc[i+1:, ['Unnamed: 0.1.1','Color Components']]
+
+        for j in range(len(others)):
+            compare = others.loc[j,'Color Components'] ##string
+            compare = pd.Series(eval(compare)) ##dictionary
+            compaer_id = others.loc[j,'Unnamed: 0.1.1']
+
+            distance = 0
+            for i in range(5):
+                weight = np.mean(ref[i], compare[i])
+
+                ref_hex = ref.index[i]
+                compare_hex = compare.index[i]
+                distance = distance + distance(ref_compare_hex)
+
+            distance_data.loc[ref_id, compaer_id] = distance
+
+
+
