@@ -2,20 +2,14 @@ from collections import Counter
 from sklearn.cluster import KMeans
 from matplotlib import colors
 import matplotlib.pyplot as plt
+import numpy as np
 import cv2
 import pandas as pd
 import cv2
 import numpy as np
 import math
-
-def hex_to_rgb(data):  ##data is given as string
-    data = eval(data)
-    hex_color = list(data.keys())
-    percentage = list(data.values())
-    
-    for color in hex_color:
-        rgb = tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
-    return rgb
+from PIL import ImageColor
+import operator
 
 def rgb_to_xyz(rgb):
     
@@ -80,8 +74,9 @@ def XYZ_to_CIELAB(XYZ):
     
 def distance(HEX1,HEX2, k_L = 2, K1 = 0.0048, K2 = 0.014, k_c = 1, k_H = 1):
     
-    RGB1 = hex_to_rgb(HEX1)
-    RGB2 = hex_to_rgb(HEX2)
+    RGB1 = ImageColor.getcolor(HEX1,'RGB')
+    RGB2 = ImageColor.getcolor(HEX2, 'RGB')
+
 
     XYZ1 = rgb_to_xyz(RGB1)
     XYZ2 = rgb_to_xyz(RGB2)
