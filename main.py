@@ -42,6 +42,7 @@ def color_analysis(img):
     data ={}
     
     for i in range(len(ordered_colors)):
+        RGB = ordered_colors[i]
         if np.mean(RGB) < 240:
             data[hex_colors[i]] = ordered_values[i]
         
