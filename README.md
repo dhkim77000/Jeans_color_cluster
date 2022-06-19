@@ -22,9 +22,13 @@ Finding the right jeans that you want is difficult. Since the subtle differences
 ![image](https://user-images.githubusercontent.com/89527573/174426409-b333241d-594c-452d-a035-bd709e0186b4.png)
 ![image](https://user-images.githubusercontent.com/89527573/174426414-1ab6e0c2-7c77-4c70-8de2-d3b95545e72f.png)
 
+# Calculate Color Components of Jeans
+---
+main.py gather the color data from jeans using dataset collected from Farfetch
 
 # Measure similarity
 ---
+measure_distance.py calculate Delta E(CIE1994)
 
 The color data of the jeans if given like this.
 ![image](https://user-images.githubusercontent.com/89527573/174465994-28437ea2-c8a7-47e3-962a-b9a606534dd5.png)
