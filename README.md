@@ -44,5 +44,9 @@ The distance is weighted by its percentage calculated above.
 ![4](https://user-images.githubusercontent.com/89527573/174489860-e9dd5de8-76f7-4e46-bb33-342955a7781c.jpg)
 
 
+# Expected Output
+---
+Color distance Matrix
+![image](https://user-images.githubusercontent.com/89527573/174491104-0bbbff35-6e94-4121-953f-ff967eb17a5a.png)
 
 
