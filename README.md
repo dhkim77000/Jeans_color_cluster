@@ -29,13 +29,16 @@ Finding the right jeans that you want is difficult. Since the subtle differences
 The color data of the jeans if given like this.
 ![image](https://user-images.githubusercontent.com/89527573/174468417-0c016865-01bd-4c54-abd4-a26a9f43d32b.png)
 
-Then we measure the distance between two jeans(I used Delta E1994). About ~15 seems acceptable distance.
+Then we measure the distance between two jeans(I used Delta E1994)
+#### Color Space
+![image](https://user-images.githubusercontent.com/89527573/175081709-c048973e-4bf8-4241-88d8-7ba141f2f5f2.png)
+
 The distance is weighted by its percentage calculated above.
 
 ![image](https://user-images.githubusercontent.com/89527573/174468409-56406fd2-c337-4f76-8225-62151b56258e.png)
 
 #### Distance = 25.051756135932177(Pretty Close)
-![image](https://user-images.githubusercontent.com/89527573/175081709-c048973e-4bf8-4241-88d8-7ba141f2f5f2.png)
+
 ![3](https://user-images.githubusercontent.com/89527573/174489847-7181a63a-8f59-47cd-9d8d-ca07248c4919.jpg)
 ![4](https://user-images.githubusercontent.com/89527573/174489860-e9dd5de8-76f7-4e46-bb33-342955a7781c.jpg)
 
