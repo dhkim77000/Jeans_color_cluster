@@ -38,3 +38,6 @@ The distance is weighted by its percentage calculated above.
 
 ![image](https://user-images.githubusercontent.com/89527573/174466169-8b71f740-aead-4a4a-b994-89fdac13e5ed.png)
 
+
+![image](https://user-images.githubusercontent.com/89527573/175208015-5952cba5-c2fb-4632-a7da-102271decfda.png)
+
