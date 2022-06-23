@@ -100,7 +100,7 @@ def distance(HEX1,HEX2, k_L = 2, K1 = 0.0048, K2 = 0.014, k_c = 1, k_H = 1):
     
     delta_Cab = C1-C2
     
-    delta_Hab = np.sqrt( (CIE_a1 - CIE_a2)**2 + (CIE_b1 - CIE_b2)**2 - delta_Cab**2 )
+    delta_Hab = np.sqrt( abs((CIE_a1 - CIE_a2)**2 + (CIE_b1 - CIE_b2)**2 - delta_Cab**2))
     
     S_L = 1
     S_C = 1 + K1 * C1
