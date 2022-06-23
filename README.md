@@ -38,6 +38,6 @@ The distance is weighted by its percentage calculated above.
 
 ![image](https://user-images.githubusercontent.com/89527573/174466169-8b71f740-aead-4a4a-b994-89fdac13e5ed.png)
 
-
-![image](https://user-images.githubusercontent.com/89527573/175208015-5952cba5-c2fb-4632-a7da-102271decfda.png)
+#### Since the matrix is symmetric, code only calculates upper triangle of the matrix.
+![image](https://user-images.githubusercontent.com/89527573/175212714-515c007f-c336-4a86-a0a6-057b84ce3c68.png)
 
