@@ -10,7 +10,8 @@ import numpy as np
 import math
 from PIL import ImageColor
 import operator
-
+from tqdm import tqdm
+import pdb
 def rgb_to_xyz(rgb):
     
     R = rgb[0]
@@ -113,30 +114,54 @@ def distance(HEX1,HEX2, k_L = 2, K1 = 0.0048, K2 = 0.014, k_c = 1, k_H = 1):
 if __name__ == "__main__":
 
     df = pd.read_csv('/home/dhkim/Jeans_cluster/jeans_color_data.csv')
-    distance_data = pd.DataFrame(np.zeros((len(df), len(df))), columns = df['Unnamed: 0.1.1'], index =  df['Unnamed: 0.1.1'])  
+
+    distance_data = pd.DataFrame(np.zeros((len(df), len(df))), columns = df['ID'], index =  df['ID'])  
     for i in tqdm(range(len(df))):
+   
+        ref_id = df.loc[i,'ID']
 
-        ref_id = ref.loc[i,'Unnamed: 0.1.1']
-
-        ref = ref.loc[i,'Color Components'] ##string
+        ref = df.loc[i,'Color Components'] ##string
         ref = pd.Series(eval(ref)) ## dictionary
 
-        others = df.loc[i+1:, ['Unnamed: 0.1.1','Color Components']]
-
+        others = df.loc[i+1:, ['ID','Color Components']]
+        others.index = range(len(others))
         for j in range(len(others)):
             compare = others.loc[j,'Color Components'] ##string
             compare = pd.Series(eval(compare)) ##dictionary
-            compaer_id = others.loc[j,'Unnamed: 0.1.1']
+            compaer_id = others.loc[j,'ID']
 
-            distance = 0
-            for i in range(5):
-                weight = np.mean(ref[i], compare[i])
-
-                ref_hex = ref.index[i]
-                compare_hex = compare.index[i]
-                distance = distance + distance(ref_compare_hex)
+            d = 0
+            if len(compare) == len(ref):
+                for i in range(5):
+                    weight = np.mean([ref[i], compare[i]])
+                    ref_hex = ref.index[i]
+                    compare_hex = compare.index[i]
+                    d = d + distance(ref_hex, compare_hex) * weight
+            else:
+                if len(compare) > len(ref):
+                    compare_d = np.array_split(np.array(compare),len(ref))
+                    k = 0
+                    for i in range(len(ref)):
+                        for compare_block in compare_d:
+                            for cp in compare_block:
+                                weight = np.mean([cp, ref[i]])
+                                compare_hex = compare.index[i]
+                                ref_hex = ref.index[k]
+                                d = d + distance(ref_hex, compare_hex) * weight
+                        k = k+1
+                else:
+                    ref_d = np.array_split(np.array(ref),len(compare))
+                    k = 0
+                    for i in range(len(compare)):
+                        for ref_block in ref_d:
+                            for rf in ref_block:
+                                weight = np.mean([rf, compare[i]])
+                                ref_hex = ref.index[i]
+                                compare_hex = compare.index[k]
+                                d = d + distance(ref_hex, compare_hex) * weight
+                        k = k+1
 
             distance_data.loc[ref_id, compaer_id] = distance
 
-
+    distance_data.to_csv('/home/dhkim/Jeans_cluster/distance.csv')
 
