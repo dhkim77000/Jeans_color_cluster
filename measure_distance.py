@@ -116,7 +116,7 @@ if __name__ == "__main__":
     df = pd.read_csv('/home/dhkim/Jeans_cluster/jeans_color_data.csv')
 
     distance_data = pd.DataFrame(np.zeros((len(df), len(df))), columns = df['ID'], index =  df['ID'])  
-    for i in tqdm(range(len(df))):
+    for i in (range(len(df))):
    
         ref_id = df.loc[i,'ID']
 
@@ -125,7 +125,7 @@ if __name__ == "__main__":
 
         others = df.loc[i+1:, ['ID','Color Components']]
         others.index = range(len(others))
-        for j in range(len(others)):
+        for j in tqdm(range(len(others))):
             compare = others.loc[j,'Color Components'] ##string
             compare = pd.Series(eval(compare)) ##dictionary
             compaer_id = others.loc[j,'ID']
